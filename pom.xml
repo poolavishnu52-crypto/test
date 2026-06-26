@@ -23,29 +23,19 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				<configuration>
-					<classifier>mule-application</classifier>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-	<profiles>
-		<profile>
-			<id>cloudhub-deploy</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.mule.tools.maven</groupId>
-						<artifactId>mule-maven-plugin</artifactId>
-						<version>${mule.maven.plugin.version}</version>
-						<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
 						<configuration>
 							<classifier>mule-application</classifier>
 							<cloudhub2Deployment>
@@ -53,21 +43,22 @@
 								<provider>MC</provider>
 								<environment>dev</environment>
 								<target>Cloudhub-US-East-2</target> 
-								<muleVersion>${mule.version}</muleVersion>
+								<muleVersion>4.12.0</muleVersion>
 								<username>poolavishnu52</username>
 								<password>Gyan@060219</password>
 								<applicationName>test</applicationName>
-								<skip>false</skip>
+								<replicas>1</replicas>
+								<vCores>0.1</vCores>
 								<deploymentSettings>
 									<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
 								</deploymentSettings>
 							</cloudhub2Deployment>
 						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
