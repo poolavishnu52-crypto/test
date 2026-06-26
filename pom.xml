@@ -12,7 +12,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<app.runtime>4.12.0</app.runtime>
 		<mule.maven.plugin.version>4.9.1</mule.maven.plugin.version>
 	</properties>
@@ -31,24 +30,44 @@
 				<extensions>true</extensions>
 				<configuration>
 					<classifier>mule-application</classifier>
-					<cloudhub2Deployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<provider>MC</provider>
-						<environment>DEV</environment>
-						<target>Cloudhub-US-East-2</target> 
-						<muleVersion>${mule.version}</muleVersion>
-						<username>poolavishnu52</username>
-						<password>Gyan@060219</password>
-						<applicationName>test</applicationName>
-						<skip>true</skip>
-						<deploymentSettings>
-							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
-						</deploymentSettings>
-					</cloudhub2Deployment>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>cloudhub-deploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.mule.tools.maven</groupId>
+						<artifactId>mule-maven-plugin</artifactId>
+						<version>${mule.maven.plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<classifier>mule-application</classifier>
+							<cloudhub2Deployment>
+								<uri>https://anypoint.mulesoft.com</uri>
+								<provider>MC</provider>
+								<environment>dev</environment>
+								<target>Cloudhub-US-East-2</target> 
+								<muleVersion>${mule.version}</muleVersion>
+								<username>poolavishnu52</username>
+								<password>Gyan@060219</password>
+								<applicationName>test</applicationName>
+								<skip>false</skip>
+								<deploymentSettings>
+									<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+								</deploymentSettings>
+							</cloudhub2Deployment>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<dependencies>
 		<dependency>
