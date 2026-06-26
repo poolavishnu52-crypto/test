@@ -36,7 +36,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHubDeployment>
+					<cloudHub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
 						<username>poolavishnu52</username>
@@ -44,7 +44,7 @@
 						<environment>dev</environment>
 						<applicationName>${appname}</applicationName>
 						<businessGroup>capgemini</businessGroup>
-					</cloudHubDeployment>
+					</cloudHub2Deployment>
 				</configuration>
 			</plugin>
 		</plugins>
