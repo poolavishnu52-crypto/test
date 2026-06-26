@@ -36,15 +36,18 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHub2Deployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>${mule.version}</muleVersion>
-						<username>poolavishnu52</username>
-						<password>Gyan@060219</password>
-						<environment>dev</environment>
-						<applicationName>${appname}</applicationName>
-						<businessGroup>capgemini</businessGroup>
-					</cloudHub2Deployment>
+<classifier>mule-application</classifier>
+        <cloudhub2Deployment>
+            <uri>https://anypoint.mulesoft.com</uri>
+            <provider>MC</provider>
+            <environment>${env}</environment>
+            <target>Cloudhub-US-East-2</target> <server>anypoint-exchange-backend</server> <applicationName>${app.name}</applicationName>
+            <replicas>${workers}</replicas>
+            <vCores>${vCore}</vCores>
+            <deploymentSettings>
+                <generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+            </deploymentSettings>
+        </cloudhub2Deployment>
 				</configuration>
 			</plugin>
 		</plugins>
